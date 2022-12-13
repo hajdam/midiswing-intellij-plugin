@@ -1,0 +1,52 @@
+<idea-plugin>
+    <id>net.zdechov.hajdam.midiswing</id>
+    <name>MidiSwing - Midi Player</name>
+    <version>0.1.0.snapshot</version>
+
+    <description><![CDATA[
+<p>Wrapper plugin for MidiSwing midi editor, because why not...</p>
+
+<h1>License</h1>
+- Wrapper <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a><br/>
+- MidiSwing: Freeware (c) Pascal Naidon
+
+<h1>Links</h1>
+Sources: <a href="https://github.com/hajdam/midiswing-intellij-plugin">https://github.com/hajdam/midiswing-intellij-plugin</a>
+    ]]></description>
+
+    <change-notes><![CDATA[
+<ul><li>First release</li>
+</ul>
+    ]]>
+    </change-notes>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="211.1"/>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- <depends>com.intellij.modules.lang</depends> -->
+
+    <project-components>
+    </project-components>
+
+    <application-components>
+        <component>
+            <implementation-class>net.zdechov.hajdam.midiswing.intellij.MidiFileEditorProvider</implementation-class>
+        </component>
+        <!-- <component>
+            <implementation-class>org.exbin.bined.intellij.BinEdApplicationSettings</implementation-class>
+        </component> -->
+    </application-components>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <postStartupActivity implementation="net.zdechov.hajdam.midiswing.intellij.MidiSwingPluginStartupActivity"/>
+        <fileType name="Midi File" implementationClass="net.zdechov.hajdam.midiswing.MidiFileType" fieldName="INSTANCE"
+                  language="" extensions="mid,midi"/>
+        <fileTemplateGroup implementation="net.zdechov.hajdam.midiswing.intellij.BinEdFileTemplateGroupDescriptionFactory"/>
+        <virtualFileSystem implementationClass="net.zdechov.hajdam.midiswing.intellij.MidiFileSystem" key="bined" physical="false"/>
+        <fileEditorProvider implementation="net.zdechov.hajdam.midiswing.intellij.MidiFileEditorProvider"/>
+        <fileEditorProvider implementation="net.zdechov.hajdam.midiswing.intellij.MidiNativeFileEditorProvider"/>
+        <!-- <diff.DiffTool implementation="org.exbin.bined.intellij.BinEdDiffTool"/> -->
+    </extensions>
+</idea-plugin>

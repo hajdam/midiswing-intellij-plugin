@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MidiSwing">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/MidiSwing.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

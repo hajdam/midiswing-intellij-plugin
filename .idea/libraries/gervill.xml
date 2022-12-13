@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gervill">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/gervill.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
