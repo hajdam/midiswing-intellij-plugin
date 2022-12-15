@@ -56,13 +56,13 @@ public class MidiNativeFileEditor implements FileEditor, DumbAware {
     @Nonnull
     @Override
     public JComponent getComponent() {
-        return nativeFile.getComponent();
+        return null; //nativeFile.getComponent();
     }
 
     @Nullable
     @Override
     public JComponent getPreferredFocusedComponent() {
-        return nativeFile.getPreferredFocusedComponent();
+        return null;
     }
 
     @Nonnull
@@ -83,7 +83,8 @@ public class MidiNativeFileEditor implements FileEditor, DumbAware {
 
     @Override
     public boolean isModified() {
-        return nativeFile.isModified();
+        // TODO
+        return false;
     }
 
     @Override
@@ -146,7 +147,7 @@ public class MidiNativeFileEditor implements FileEditor, DumbAware {
     @Nullable
     @Override
     public VirtualFile getFile() {
-        return nativeFile.getVirtualFile();
+        return null; // nativeFile.getVirtualFile();
     }
 
     @Nonnull

@@ -41,7 +41,7 @@ Sources: <a href="https://github.com/hajdam/midiswing-intellij-plugin">https://g
 
     <extensions defaultExtensionNs="com.intellij">
         <postStartupActivity implementation="net.zdechov.hajdam.midiswing.intellij.MidiSwingPluginStartupActivity"/>
-        <fileType name="Midi File" implementationClass="net.zdechov.hajdam.midiswing.MidiFileType" fieldName="INSTANCE"
+        <fileType name="MIDI File" implementationClass="net.zdechov.hajdam.midiswing.intellij.MidiFileType" fieldName="INSTANCE"
                   language="" extensions="mid,midi"/>
         <fileTemplateGroup implementation="net.zdechov.hajdam.midiswing.intellij.BinEdFileTemplateGroupDescriptionFactory"/>
         <virtualFileSystem implementationClass="net.zdechov.hajdam.midiswing.intellij.MidiFileSystem" key="bined" physical="false"/>

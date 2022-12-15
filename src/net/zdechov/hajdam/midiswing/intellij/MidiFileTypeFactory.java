@@ -30,8 +30,8 @@ public class MidiFileTypeFactory implements FileTemplateGroupDescriptorFactory {
     @Nonnull
     @Override
     public FileTemplateGroupDescriptor getFileTemplatesDescriptor() {
-        final FileTemplateGroupDescriptor descriptor = new FileTemplateGroupDescriptor("MIDI File", AllIcons.FileTypes.Any_type);
-        descriptor.addTemplate(new FileTemplateDescriptor("Empty MIDI file.mid", AllIcons.FileTypes.Any_type));
+        final FileTemplateGroupDescriptor descriptor = new FileTemplateGroupDescriptor("Midi File", AllIcons.FileTypes.Any_type);
+        descriptor.addTemplate(new FileTemplateDescriptor("Empty Midi file.mid", AllIcons.FileTypes.Any_type));
         return descriptor;
     }
 }

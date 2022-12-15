@@ -65,28 +65,28 @@ public class MidiFileEditor implements FileEditor, DumbAware {
         connect.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
             @Override
             public void fileClosed(@Nonnull FileEditorManager source, @Nonnull VirtualFile virtualFile) {
-                if (virtualFile instanceof MidiVirtualFile && !((MidiVirtualFile) virtualFile).isMoved() && !((MidiVirtualFile) virtualFile).isClosed()) {
-                    ((MidiVirtualFile) virtualFile).setClosed(true);
-                    BinEdFileHandler editorPanel = ((MidiVirtualFile) virtualFile).getEditorFile();
-                    if (!editorPanel.releaseFile()) {
-                        // TODO Intercept close event instead of editor recreation
-                        FileEditorManager fileEditorManager = FileEditorManager.getInstance(project);
-                        fileEditorManager.setSelectedEditor(virtualFile, MidiFileEditorProvider.MIDI_EDITOR_TYPE_ID);
-//                      OpenFileDescriptor descriptor = new OpenFileDescriptor(project, virtualFile, 0);
-//                          List<FileEditor> editors = fileEditorManager.openEditor(descriptor, true);
-//                        for (FileEditor fileEditor : editors) {
-//                            if (fileEditor instanceof BinEdFileEditor) {
-//                                // ((BinEdFileEditor) fileEditor).editorPanel.reopenFile(virtualFile);
-//                            }
-//                        }
-                        // editorPanel.closeData(false);
-                    } else {
-                        Application application = ApplicationManager.getApplication();
-                        ApplicationManager.getApplication().invokeLater(() -> {
-                            editorPanel.closeData();
-                        });
-                    }
-                }
+//                if (virtualFile instanceof MidiVirtualFile && !((MidiVirtualFile) virtualFile).isMoved() && !((MidiVirtualFile) virtualFile).isClosed()) {
+//                    ((MidiVirtualFile) virtualFile).setClosed(true);
+//                    BinEdFileHandler editorPanel = ((MidiVirtualFile) virtualFile).getEditorFile();
+//                    if (!editorPanel.releaseFile()) {
+//                        // TODO Intercept close event instead of editor recreation
+//                        FileEditorManager fileEditorManager = FileEditorManager.getInstance(project);
+//                        fileEditorManager.setSelectedEditor(virtualFile, MidiFileEditorProvider.MIDI_EDITOR_TYPE_ID);
+////                      OpenFileDescriptor descriptor = new OpenFileDescriptor(project, virtualFile, 0);
+////                          List<FileEditor> editors = fileEditorManager.openEditor(descriptor, true);
+////                        for (FileEditor fileEditor : editors) {
+////                            if (fileEditor instanceof BinEdFileEditor) {
+////                                // ((BinEdFileEditor) fileEditor).editorPanel.reopenFile(virtualFile);
+////                            }
+////                        }
+//                        // editorPanel.closeData(false);
+//                    } else {
+//                        Application application = ApplicationManager.getApplication();
+//                        ApplicationManager.getApplication().invokeLater(() -> {
+//                            editorPanel.closeData();
+//                        });
+//                    }
+//                }
             }
         });
     }
@@ -100,7 +100,7 @@ public class MidiFileEditor implements FileEditor, DumbAware {
     @Nullable
     @Override
     public JComponent getPreferredFocusedComponent() {
-        return virtualFile.getPreferredFocusedComponent();
+        return null;
     }
 
     @Nonnull
@@ -121,7 +121,8 @@ public class MidiFileEditor implements FileEditor, DumbAware {
 
     @Override
     public boolean isModified() {
-        return virtualFile.getEditorFile().isModified();
+        // TODO
+        return false;
     }
 
     @Override
