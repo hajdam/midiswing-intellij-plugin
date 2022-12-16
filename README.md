@@ -1,7 +1,11 @@
 MidiSwing - Midi Player
 =======================
 
-Wrapper plugin for MidiSwing midi editor, because why not... 
+Wrapper plugin for MidiSwing freeware midi player / editor, because why not... 
+
+Open *.mid file.
+
+Largely experimental - use at your own risk - can freeze your IDE and eat up your memory.
 
 MidiSwing Homepage (discontinued): http://www.les-stooges.org/pascal/midiswing  
 

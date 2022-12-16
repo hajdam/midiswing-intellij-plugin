@@ -1,13 +1,16 @@
 <idea-plugin>
     <id>net.zdechov.hajdam.midiswing</id>
     <name>MidiSwing - Midi Player</name>
-    <version>0.1.0.snapshot</version>
+    <version>0.1.0</version>
+    <vendor email="bomi@centrum.cz" url="https://hajdam.zdechov.net">Miroslav Hajda</vendor>
 
     <description><![CDATA[
-<p>Wrapper plugin for MidiSwing midi editor, because why not...</p>
+<p>Wrapper plugin for MidiSwing freeware midi player / editor, because why not...</p>
+<p>Open *.mid file.</p>
+<p>Largely experimental - use at your own risk - can freeze your IDE and eat up your memory</p>
 
 <h1>License</h1>
-- Wrapper <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a><br/>
+- Wrapper: <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a><br/>
 - MidiSwing: Freeware (c) Pascal Naidon
 
 <h1>Links</h1>
@@ -25,7 +28,7 @@ Sources: <a href="https://github.com/hajdam/midiswing-intellij-plugin">https://g
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
-    <!-- <depends>com.intellij.modules.lang</depends> -->
+    <depends>com.intellij.modules.lang</depends>
 
     <project-components>
     </project-components>
