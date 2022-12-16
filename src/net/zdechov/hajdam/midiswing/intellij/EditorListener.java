@@ -24,9 +24,6 @@ import javax.swing.*;
 
 /**
  * Editor listener for binary editor.
- *
- * @author ExBin Project (http://exbin.org)
- * @version 0.1.0 2016/12/08
  */
 public class EditorListener implements FileEditorManagerListener {
 

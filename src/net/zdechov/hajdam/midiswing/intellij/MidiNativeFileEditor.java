@@ -31,8 +31,13 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.File;
 
 /**
  * Native file editor using MIDI editor component.
@@ -46,17 +51,25 @@ public class MidiNativeFileEditor implements FileEditor, DumbAware {
     private final PropertyChangeSupport propertyChangeSupport;
     private String displayName;
     private MidiFileEditorState fileEditorState = new MidiFileEditorState();
+    private final VirtualFile virtualFile;
+    private MidiSwingWrapper midiSwingWrapper = new MidiSwingWrapper();
+    private JComponent component;
 
     public MidiNativeFileEditor(Project project, final VirtualFile virtualFile) {
         this.project = project;
+        this.virtualFile = virtualFile;
 
         propertyChangeSupport = new PropertyChangeSupport(this);
+        midiSwingWrapper.openForFile(new File(virtualFile.getCanonicalPath()));
+        component = new JPanel(new BorderLayout());
+        component.add(midiSwingWrapper.getComponent(), BorderLayout.CENTER);
+        component.add(midiSwingWrapper.getMenuBar(), BorderLayout.NORTH);
     }
 
     @Nonnull
     @Override
     public JComponent getComponent() {
-        return null; //nativeFile.getComponent();
+        return component;
     }
 
     @Nullable
@@ -127,6 +140,7 @@ public class MidiNativeFileEditor implements FileEditor, DumbAware {
 
     @Override
     public void dispose() {
+        midiSwingWrapper.close();
     }
 
     @Nullable
@@ -147,7 +161,7 @@ public class MidiNativeFileEditor implements FileEditor, DumbAware {
     @Nullable
     @Override
     public VirtualFile getFile() {
-        return null; // nativeFile.getVirtualFile();
+        return virtualFile;
     }
 
     @Nonnull

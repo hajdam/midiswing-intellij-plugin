@@ -34,19 +34,15 @@ Sources: <a href="https://github.com/hajdam/midiswing-intellij-plugin">https://g
         <component>
             <implementation-class>net.zdechov.hajdam.midiswing.intellij.MidiFileEditorProvider</implementation-class>
         </component>
-        <!-- <component>
-            <implementation-class>org.exbin.bined.intellij.BinEdApplicationSettings</implementation-class>
-        </component> -->
     </application-components>
 
     <extensions defaultExtensionNs="com.intellij">
         <postStartupActivity implementation="net.zdechov.hajdam.midiswing.intellij.MidiSwingPluginStartupActivity"/>
         <fileType name="MIDI File" implementationClass="net.zdechov.hajdam.midiswing.intellij.MidiFileType" fieldName="INSTANCE"
-                  language="" extensions="mid,midi"/>
-        <fileTemplateGroup implementation="net.zdechov.hajdam.midiswing.intellij.BinEdFileTemplateGroupDescriptionFactory"/>
+                  language="" extensions="mid;midi"/>
+        <fileTemplateGroup implementation="net.zdechov.hajdam.midiswing.intellij.MidiFileTemplateGroupDescriptionFactory"/>
         <virtualFileSystem implementationClass="net.zdechov.hajdam.midiswing.intellij.MidiFileSystem" key="bined" physical="false"/>
         <fileEditorProvider implementation="net.zdechov.hajdam.midiswing.intellij.MidiFileEditorProvider"/>
         <fileEditorProvider implementation="net.zdechov.hajdam.midiswing.intellij.MidiNativeFileEditorProvider"/>
-        <!-- <diff.DiffTool implementation="org.exbin.bined.intellij.BinEdDiffTool"/> -->
     </extensions>
 </idea-plugin>

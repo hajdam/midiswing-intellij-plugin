@@ -15,15 +15,15 @@
  */
 package net.zdechov.hajdam.midiswing.intellij;
 
-import com.intellij.icons.AllIcons;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.IconManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNullableByDefault;
-import javax.swing.*;
+import javax.swing.Icon;
 
 /**
  * File type for MIDI files.
@@ -58,7 +58,7 @@ public class MidiFileType implements FileType, DumbAware {
     @Nullable
     @Override
     public Icon getIcon() {
-        return AllIcons.FileTypes.Any_type;
+        return IconManager.getInstance().getIcon("icons/midi_file.svg", this.getClass());
     }
 
     @Override

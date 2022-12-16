@@ -15,27 +15,26 @@
  */
 package net.zdechov.hajdam.midiswing.intellij;
 
-import com.intellij.icons.AllIcons;
 import com.intellij.ide.fileTemplates.FileTemplateDescriptor;
 import com.intellij.ide.fileTemplates.FileTemplateGroupDescriptor;
 import com.intellij.ide.fileTemplates.FileTemplateGroupDescriptorFactory;
 import com.intellij.openapi.project.DumbAware;
+import com.intellij.ui.IconManager;
 
 import javax.annotation.Nonnull;
+import javax.swing.Icon;
 
 /**
  * File template group descriptor factory.
- *
- * @author ExBin Project (http://exbin.org)
- * @version 0.2.6 2021/12/30
  */
-public class BinEdFileTemplateGroupDescriptionFactory implements FileTemplateGroupDescriptorFactory, DumbAware {
+public class MidiFileTemplateGroupDescriptionFactory implements FileTemplateGroupDescriptorFactory, DumbAware {
 
     @Nonnull
     @Override
     public FileTemplateGroupDescriptor getFileTemplatesDescriptor() {
-        final FileTemplateGroupDescriptor descriptor = new FileTemplateGroupDescriptor("Binary File", AllIcons.FileTypes.Any_type);
-        descriptor.addTemplate(new FileTemplateDescriptor("Empty binary file.bin", AllIcons.FileTypes.Any_type));
+        Icon icon = IconManager.getInstance().getIcon("icons/midi_file.svg", this.getClass()); // AllIcons.FileTypes.Any_type
+        final FileTemplateGroupDescriptor descriptor = new FileTemplateGroupDescriptor("MIDI File", icon);
+        descriptor.addTemplate(new FileTemplateDescriptor("Empty MIDI file.bin", icon));
         return descriptor;
     }
 }
