@@ -9,7 +9,7 @@ Largely experimental - use at your own risk - can freeze your IDE and eat up you
 
 MidiSwing Homepage (discontinued): http://www.les-stooges.org/pascal/midiswing  
 
-Published as: https://plugins.jetbrains.com/plugin/xxxx-midiswing-midi-player  
+Published as: https://plugins.jetbrains.com/plugin/20697-midiswing-midi-player  
 
 Screenshot
 ----------
