@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>net.zdechov.hajdam.midiswing</id>
     <name>MidiSwing - Midi Player</name>
-    <version>0.1.0</version>
+    <version>0.1.1.snapshot</version>
     <vendor email="bomi@centrum.cz" url="https://hajdam.zdechov.net">Miroslav Hajda</vendor>
 
     <description><![CDATA[
@@ -18,7 +18,7 @@ Sources: <a href="https://github.com/hajdam/midiswing-intellij-plugin">https://g
     ]]></description>
 
     <change-notes><![CDATA[
-<ul><li>First release</li>
+<ul><li>Minor fix</li>
 </ul>
     ]]>
     </change-notes>
@@ -44,7 +44,7 @@ Sources: <a href="https://github.com/hajdam/midiswing-intellij-plugin">https://g
         <fileType name="MIDI File" implementationClass="net.zdechov.hajdam.midiswing.intellij.MidiFileType" fieldName="INSTANCE"
                   language="" extensions="mid;midi"/>
         <fileTemplateGroup implementation="net.zdechov.hajdam.midiswing.intellij.MidiFileTemplateGroupDescriptionFactory"/>
-        <virtualFileSystem implementationClass="net.zdechov.hajdam.midiswing.intellij.MidiFileSystem" key="bined" physical="false"/>
+        <virtualFileSystem implementationClass="net.zdechov.hajdam.midiswing.intellij.MidiFileSystem" key="midiswing" physical="false"/>
         <fileEditorProvider implementation="net.zdechov.hajdam.midiswing.intellij.MidiFileEditorProvider"/>
         <fileEditorProvider implementation="net.zdechov.hajdam.midiswing.intellij.MidiNativeFileEditorProvider"/>
     </extensions>
