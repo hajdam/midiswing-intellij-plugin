@@ -46,7 +46,6 @@ public class MidiSwingWrapper {
             midiWindow.setContentPane(new JLabel(""));
             menuBar = midiWindow.getJMenuBar();
             midiWindow.setJMenuBar(null);
-            midiWindow.dispose();
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchFieldException e) {
             throw new RuntimeException(e);
         }

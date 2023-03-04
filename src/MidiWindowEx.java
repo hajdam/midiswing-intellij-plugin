@@ -2,13 +2,12 @@ import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.JViewport;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLFrameHyperlinkEvent;
-import java.awt.Component;
+import java.awt.BorderLayout;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -30,7 +29,7 @@ public class MidiWindowEx extends MidiWindow {
     }
 
     public void about() {
-        URL uRL = this.getClass().getClassLoader().getResource("net/zdechov/hajdam/midiswing/intellij/resources/about.html");
+        URL uRL = this.getClass().getResource("/net/zdechov/hajdam/midiswing/intellij/resources/about.html");
         try {
             new AboutDialogFrame(uRL, 450, 262, this);
         } catch (Exception exception) {
@@ -38,38 +37,33 @@ public class MidiWindowEx extends MidiWindow {
         }
     }
 
-    public class AboutDialogFrame extends JFrame {
+    private static class AboutDialogFrame extends JFrame {
 
-        public AboutDialogFrame(URL uRL, int n, int n2, MidiWindow midiWindow2) {
+        public AboutDialogFrame(URL url, int windowWidth, int windowHeight, MidiWindow midiWindow) {
             super("MidiSwing");
             try {
-                JEditorPane html = new JEditorPane(uRL);
+                JEditorPane html = new JEditorPane(url);
                 html.setEditable(false);
                 html.setContentType("text/html");
-                html.addHyperlinkListener(new HyperlinkListener() {
-                    public void hyperlinkUpdate(HyperlinkEvent hyperlinkEvent) {
-                        if (hyperlinkEvent.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                            if (hyperlinkEvent instanceof HTMLFrameHyperlinkEvent) {
-                                ((HTMLDocument)html.getDocument()).processHTMLFrameHyperlinkEvent((HTMLFrameHyperlinkEvent)hyperlinkEvent);
-                            } else {
-                                MidiWindowEx.openDesktopURL(hyperlinkEvent.getURL());
-                            }
+                html.addHyperlinkListener(hyperlinkEvent -> {
+                    if (hyperlinkEvent.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                        if (hyperlinkEvent instanceof HTMLFrameHyperlinkEvent) {
+                            ((HTMLDocument) html.getDocument()).processHTMLFrameHyperlinkEvent((HTMLFrameHyperlinkEvent) hyperlinkEvent);
+                        } else {
+                            MidiWindowEx.openDesktopURL(hyperlinkEvent.getURL());
                         }
                     }
                 });
-                JScrollPane jScrollPane = new JScrollPane();
-                JViewport jViewport = jScrollPane.getViewport();
-                jViewport.add(html);
-                this.getContentPane().add((Component)jScrollPane, "Center");
-                this.setDefaultCloseOperation(2);
+                JScrollPane scrollPane = new JScrollPane(html);
+                this.getContentPane().add(scrollPane, BorderLayout.CENTER);
+                this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 this.setFocusable(false);
-                this.setSize(new Dimension(n, n2));
+                this.setSize(new Dimension(windowWidth, windowHeight));
                 Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-                this.setLocation(dimension.width / 2 - n / 2, dimension.height / 2 - n2 / 2);
-                this.show();
-            }
-            catch (Exception exception) {
-                JOptionPane.showMessageDialog(midiWindow2, MidiSwing.resource.getString("CONNECTION_ERROR"));
+                this.setLocation(dimension.width / 2 - windowWidth / 2, dimension.height / 2 - windowHeight / 2);
+                this.setVisible(true);
+            } catch (Exception exception) {
+                JOptionPane.showMessageDialog(midiWindow, MidiSwing.resource.getString("CONNECTION_ERROR"));
             }
         }
     }

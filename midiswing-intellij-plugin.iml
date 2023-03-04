@@ -14,7 +14,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jsr305-2.0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="jsr305-2.0.1" level="project" />
     <orderEntry type="library" name="gervill" level="project" />
     <orderEntry type="library" name="MidiSwing" level="project" />
   </component>
