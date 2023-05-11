@@ -28,5 +28,5 @@ Assign SDK using 2021.1.1 IntelliJ platform / add and use "Plugin" run configura
 License
 -------
 
-Wrapper: Apache License, Version 2.0 - see LICENSE-2.0.txt  
+Wrapper: Apache License, Version 2.0 - see LICENSE.txt  
 MidiSwing: Freeware (c) Pascal Naidon
