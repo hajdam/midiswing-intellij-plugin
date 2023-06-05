@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>net.zdechov.hajdam.midiswing</id>
     <name>MidiSwing - Midi Player</name>
-    <version>0.1.1</version>
+    <version>0.1.2.snapshot</version>
     <vendor email="bomi@centrum.cz" url="https://hajdam.zdechov.net">Miroslav Hajda</vendor>
 
     <description><![CDATA[

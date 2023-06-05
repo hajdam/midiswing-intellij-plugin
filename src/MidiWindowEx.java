@@ -1,3 +1,5 @@
+import com.intellij.ui.components.JBScrollPane;
+
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -29,22 +31,18 @@ public class MidiWindowEx extends MidiWindow {
     }
 
     public void about() {
-        URL uRL = this.getClass().getResource("/net/zdechov/hajdam/midiswing/intellij/resources/about.html");
-        try {
-            new AboutDialogFrame(uRL, 450, 262, this);
-        } catch (Exception exception) {
-            JOptionPane.showMessageDialog(this, "Error");
-        }
+        new AboutDialogFrame("/net/zdechov/hajdam/midiswing/intellij/resources/about.html", 450, 262, this);
     }
 
     private static class AboutDialogFrame extends JFrame {
 
-        public AboutDialogFrame(URL url, int windowWidth, int windowHeight, MidiWindow midiWindow) {
+        public AboutDialogFrame(String resourcePath, int windowWidth, int windowHeight, MidiWindow midiWindow) {
             super("MidiSwing");
             try {
-                JEditorPane html = new JEditorPane(url);
+                JEditorPane html = new JEditorPane();
                 html.setEditable(false);
                 html.setContentType("text/html");
+                html.setPage(this.getClass().getResource(resourcePath));
                 html.addHyperlinkListener(hyperlinkEvent -> {
                     if (hyperlinkEvent.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
                         if (hyperlinkEvent instanceof HTMLFrameHyperlinkEvent) {
@@ -54,7 +52,8 @@ public class MidiWindowEx extends MidiWindow {
                         }
                     }
                 });
-                JScrollPane scrollPane = new JScrollPane(html);
+                JBScrollPane scrollPane = new JBScrollPane();
+                scrollPane.getViewport().setView(html);
                 this.getContentPane().add(scrollPane, BorderLayout.CENTER);
                 this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 this.setFocusable(false);

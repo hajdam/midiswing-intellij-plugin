@@ -17,8 +17,8 @@ package net.zdechov.hajdam.midiswing.intellij;
 
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.project.DumbAware;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.ui.IconManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -58,7 +58,7 @@ public class MidiFileType implements FileType, DumbAware {
     @Nullable
     @Override
     public Icon getIcon() {
-        return IconManager.getInstance().getIcon("icons/midi_file.svg", this.getClass());
+        return IconLoader.getIcon("icons/midi_file.svg", this.getClass());
     }
 
     @Override

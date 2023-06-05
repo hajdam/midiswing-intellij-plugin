@@ -19,7 +19,7 @@ import com.intellij.ide.fileTemplates.FileTemplateDescriptor;
 import com.intellij.ide.fileTemplates.FileTemplateGroupDescriptor;
 import com.intellij.ide.fileTemplates.FileTemplateGroupDescriptorFactory;
 import com.intellij.openapi.project.DumbAware;
-import com.intellij.ui.IconManager;
+import com.intellij.openapi.util.IconLoader;
 
 import javax.annotation.Nonnull;
 import javax.swing.Icon;
@@ -32,7 +32,7 @@ public class MidiFileTemplateGroupDescriptionFactory implements FileTemplateGrou
     @Nonnull
     @Override
     public FileTemplateGroupDescriptor getFileTemplatesDescriptor() {
-        Icon icon = IconManager.getInstance().getIcon("icons/midi_file.svg", this.getClass()); // AllIcons.FileTypes.Any_type
+        Icon icon = IconLoader.getIcon("icons/midi_file.svg", this.getClass()); // AllIcons.FileTypes.Any_type
         final FileTemplateGroupDescriptor descriptor = new FileTemplateGroupDescriptor("MIDI File", icon);
         descriptor.addTemplate(new FileTemplateDescriptor("Empty MIDI file.bin", icon));
         return descriptor;
