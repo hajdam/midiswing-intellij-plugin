@@ -16,9 +16,10 @@
 package net.zdechov.hajdam.midiswing.intellij;
 
 import com.intellij.codeHighlighting.BackgroundEditorHighlighter;
-import com.intellij.openapi.application.Application;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.fileEditor.*;
+import com.intellij.openapi.fileEditor.FileEditor;
+import com.intellij.openapi.fileEditor.FileEditorLocation;
+import com.intellij.openapi.fileEditor.FileEditorState;
+import com.intellij.openapi.fileEditor.FileEditorStateLevel;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Key;
@@ -26,13 +27,11 @@ import com.intellij.openapi.util.UserDataHolder;
 import com.intellij.openapi.util.UserDataHolderBase;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
-import com.intellij.util.messages.MessageBus;
-import com.intellij.util.messages.MessageBusConnection;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
-import javax.swing.*;
+import javax.swing.JComponent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
@@ -40,7 +39,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * File editor using BinEd editor component.
+ * File editor for MIDI file.
  */
 @ParametersAreNonnullByDefault
 public class MidiFileEditor implements FileEditor, DumbAware {
@@ -59,36 +58,6 @@ public class MidiFileEditor implements FileEditor, DumbAware {
         this.virtualFile = virtualFile;
 
         propertyChangeSupport = new PropertyChangeSupport(this);
-
-        MessageBus messageBus = project.getMessageBus();
-        MessageBusConnection connect = messageBus.connect();
-        connect.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
-            @Override
-            public void fileClosed(@Nonnull FileEditorManager source, @Nonnull VirtualFile virtualFile) {
-//                if (virtualFile instanceof MidiVirtualFile && !((MidiVirtualFile) virtualFile).isMoved() && !((MidiVirtualFile) virtualFile).isClosed()) {
-//                    ((MidiVirtualFile) virtualFile).setClosed(true);
-//                    BinEdFileHandler editorPanel = ((MidiVirtualFile) virtualFile).getEditorFile();
-//                    if (!editorPanel.releaseFile()) {
-//                        // TODO Intercept close event instead of editor recreation
-//                        FileEditorManager fileEditorManager = FileEditorManager.getInstance(project);
-//                        fileEditorManager.setSelectedEditor(virtualFile, MidiFileEditorProvider.MIDI_EDITOR_TYPE_ID);
-////                      OpenFileDescriptor descriptor = new OpenFileDescriptor(project, virtualFile, 0);
-////                          List<FileEditor> editors = fileEditorManager.openEditor(descriptor, true);
-////                        for (FileEditor fileEditor : editors) {
-////                            if (fileEditor instanceof BinEdFileEditor) {
-////                                // ((BinEdFileEditor) fileEditor).editorPanel.reopenFile(virtualFile);
-////                            }
-////                        }
-//                        // editorPanel.closeData(false);
-//                    } else {
-//                        Application application = ApplicationManager.getApplication();
-//                        ApplicationManager.getApplication().invokeLater(() -> {
-//                            editorPanel.closeData();
-//                        });
-//                    }
-//                }
-            }
-        });
     }
 
     @Nonnull
